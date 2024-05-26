@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Dummy</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>Axios Dummy GET</h1>
+    <a href="index.html"><button>Back</button></a>
+
+    <script>
+        axios.get('https://dummyjson.com/products')
+        .then((response) => {
+            console.log("berhasil mengambil data", response.data);
+        })
+        .catch((err) => {
+            console.log("erorr", err);
+        })
+        .finally(() => {
+            console.log("request selesai");
+        });
+        
+        
+    </script>
+</body>
+</html>

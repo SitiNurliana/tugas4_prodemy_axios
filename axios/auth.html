@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Dummy</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>Axios Dummy AUTH</h1>
+    <a href="index.html"><button>Back</button></a>
+   <button onclick="getToken()">GET TOKEN</button>
+   <button onclick="getData()">GET DATA</button>
+
+
+
+    <script>
+        function getToken() {
+            const ambilToken = {
+                username: "emilys",
+                password: "emilyspass",
+                expiresInMins: 30,
+            };
+            axios.post('https://dummyjson.com/auth/login', ambilToken)
+        .then((response) => {
+            console.log("berhasil menampilkan token", response.data);
+        })
+        .catch((err) => {
+            console.log("erorr", err);
+        })
+        .finally(() => {
+            console.log("request selesai");
+        });
+
+        }
+
+        function getData() {
+            const config = {
+                headers :{
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3MTY3NTI0MDksImV4cCI6MTcxNjc1NDIwOX0.hqOo98QhmESrr-QHNoCWm4nOjdjcPTAl34H2Ur8yR-Q",
+
+                }
+            };
+
+
+        axios.get('https://dummyjson.com/auth/me', config)
+        .then((response) => {
+            console.log("berhasil mengambil data", response.data);
+        })
+        .catch((err) => {
+            console.log("erorr", err);
+        })
+        .finally(() => {
+            console.log("request selesai");
+        });
+    }
+
+        
+    </script>
+</body>
+</html>
